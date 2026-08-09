@@ -3,6 +3,16 @@
 
 ---
 
+## [readme-bilingual] — 10Aug2026 00:28 AST
+**By:** Codex Mini
+**What:** Added a complete English version of the Arabic README on the same repository page. Arabic remains first, a centered Arabic/English language selector appears at the top, each language has a return link, and the English section mirrors the installation, security, commands, memory, billing, privacy, testing, and attribution details.
+**Why:** After confirming the repaired bilingual release notes, the owner requested the main repository page in both Arabic and English as well.
+**Decision:** Keep the README Arabic-first and maintain semantic parity between both sections. Keep `MANUAL.html` explicitly described as the illustrated Arabic guide rather than implying that an English manual exists. Use GitHub's native generated heading fragments (`#العربية` and `#english`) for navigation.
+**Evidence:** Both repository copies have identical README SHA-256 `0EF04993C1E8A243D6612AF4B487135606A1D5EF5821E886A217A5C96094AC61`; `git diff --check` passed; all four local README links resolve. The public README at content revision `3c694efaac3dbac3e707cb475e0e44f27400bc02` rendered both complete sections with no replacement characters or `???`, and browser verification at a 390 px viewport found no horizontal overflow. The selector hrefs exactly matched GitHub's generated heading permalinks. Testing caught and superseded an intermediate attempt that targeted GitHub's internal `user-content-*` IDs rather than its stable public heading fragments.
+**Release:** documentation-only update · product tests and package build not rerun · tag/assets unchanged · rollback: `git revert --no-commit 9dbb10a..3c694ef`, commit, and push `main`.
+
+---
+
 ## [0.1.3-release-notes-utf8-fix] — 10Aug2026 00:11 AST
 **By:** Codex Mini
 **What:** Replaced the corrupted Arabic GitHub release notes (stored as `?` characters) with a clean bilingual Arabic/English description. The Arabic block now has explicit right-to-left direction, and the published SHA-256 is shown in a shared verification section.
