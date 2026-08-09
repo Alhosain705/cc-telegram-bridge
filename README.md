@@ -4,7 +4,7 @@
 
 <p align="center">
   <strong>اختر اللغة · Choose your language</strong><br>
-  <a href="#arabic">العربية</a> · <a href="#english">English</a>
+  <a href="#user-content-arabic">العربية</a> · <a href="#user-content-english">English</a>
 </p>
 
 ---
@@ -181,7 +181,7 @@ npm run build:win
 
 هذا مشروع مجتمعي غير رسمي، وليس تابعاً لـAnthropic أو Telegram ولا معتمداً منهما.
 
-[↑ اختر اللغة / Choose language](#readme-top)
+[↑ اختر اللغة / Choose language](#user-content-readme-top)
 
 ---
 
@@ -357,4 +357,4 @@ Licensed under the MIT License. See [LICENSE](LICENSE) and [CREDITS.md](CREDITS.
 
 This is an unofficial community project. It is not affiliated with or endorsed by Anthropic or Telegram.
 
-[↑ Choose language / اختر اللغة](#readme-top)
+[↑ Choose language / اختر اللغة](#user-content-readme-top)
