@@ -3,6 +3,16 @@
 
 ---
 
+## [0.1.3-release-notes-utf8-fix] — 10Aug2026 00:11 AST
+**By:** Codex Mini
+**What:** Replaced the corrupted Arabic GitHub release notes (stored as `?` characters) with a clean bilingual Arabic/English description. The Arabic block now has explicit right-to-left direction, and the published SHA-256 is shown in a shared verification section.
+**Why:** The original PowerShell REST request passed a JSON string through the implicit Windows request encoding, so GitHub received literal question marks instead of UTF-8 Arabic.
+**Decision:** Send every future non-ASCII GitHub API JSON payload as explicit UTF-8 bytes with `Content-Type: application/json; charset=utf-8`. Keep the release notes bilingual and set the Arabic block to `dir="rtl"`.
+**Evidence:** The unauthenticated GitHub release API returns the exact Arabic and English phrases, zero question marks, and the RTL wrapper. The public page returns HTTP 200; browser inspection confirmed computed direction `rtl` and no horizontal overflow. Tag `v0.1.3` still resolves to `a7eee663bf1391bb70dd9f8cb8fa04e9c6db08c0`; both assets, sizes, and digests are unchanged.
+**Release:** `v0.1.3` · source revision unchanged · tests not rerun (release-metadata-only change) · rollback: PATCH release `367580194` with the pre-change body using the same explicit UTF-8 request path.
+
+---
+
 ## [0.1.3-public-release] — 09Aug2026 23:42 AST
 **By:** Codex Mini
 **What:** Published the first public GitHub repository with a single clean-history source snapshot of approved internal revision `526554bb7a830f6fc598df6c00eca6175f102eff`, excluding only the internal `plans/` handoff directory. Published `main`, annotated tag `v0.1.3`, the Windows x64 ZIP, and its SHA-256 manifest.
