@@ -1,5 +1,18 @@
 # CC Telegram Bridge
 
+<a id="readme-top"></a>
+
+<p align="center">
+  <strong>اختر اللغة · Choose your language</strong><br>
+  <a href="#arabic">العربية</a> · <a href="#english">English</a>
+</p>
+
+---
+
+<a id="arabic"></a>
+
+## العربية
+
 ربط عربي بسيط بين تيليجرام وClaude Code على جهاز ويندوز. ترسل طلبك للبوت، والبرنامج يشغّل Claude Code على جهازك ويرجع لك الجواب. ما يحتاج سيرفر أو اشتراك استضافة.
 
 الحزمة الجاهزة فيها نافذة إعداد عربية وNode.js محمول؛ المستخدم ما يحتاج يثبت Node أو يفتح موجّه الأوامر.
@@ -167,3 +180,181 @@ npm run build:win
 الترخيص MIT. راجع [LICENSE](LICENSE) و[CREDITS.md](CREDITS.md).
 
 هذا مشروع مجتمعي غير رسمي، وليس تابعاً لـAnthropic أو Telegram ولا معتمداً منهما.
+
+[↑ اختر اللغة / Choose language](#readme-top)
+
+---
+
+<a id="english"></a>
+
+## English
+
+A simple bridge between Telegram and Claude Code on a Windows computer. Send a request to your bot, and the bridge runs Claude Code on your computer and returns the answer. No server or hosting subscription is required.
+
+The ready-to-use package includes an Arabic setup window and a portable Node.js runtime. Users do not need to install Node.js or open a command prompt.
+
+> 📘 **Start here:** Open **[`MANUAL.html`](MANUAL.html)** in any browser. It is an illustrated Arabic guide that explains installation, features, security, and troubleshooting step by step. This `README` contains the technical details.
+
+### Step zero — Before the five steps
+
+You need an active paid Claude subscription. Both **Pro and Max** support Claude Code in the terminal; the main difference is the usage allowance. Max is not required to run the bridge.
+
+If you do not have a subscription, create a Claude account, confirm your email address, then activate Pro or Max. Once your subscription is ready, continue with the five steps below.
+
+### Before you start
+
+You need:
+
+- 64-bit Windows 10 or Windows 11. An ARM64 release is not currently available.
+- A valid Claude account and subscription.
+- A Telegram bot created through BotFather.
+- An internet connection.
+
+If Claude Code is not installed or you are not signed in, the setup window guides you through the official process and then continues automatically.
+
+### Important security notice
+
+This program connects Claude Code to your computer, which means it can read and modify files according to the permission mode you choose. We recommend running it on a dedicated computer or an older computer that has been cleared of personal data, not on your primary device.
+
+Safe mode is the default: it does not enable permission bypassing. The first time you pair your account, the bridge asks you to choose:
+
+- **Approve every action:** When Claude Code requests a sensitive action, the bridge sends your chat request-specific **✅ Approve** and **❌ Reject** buttons. Typing a normal message such as “approve” does not authorize anything. Rejection or the 10-minute timeout blocks the action.
+- **Work freely:** Enables permission bypassing, allowing actions without asking. This is risky and should only be used on a dedicated computer with no personal data.
+
+The bot is also locked down from the beginning:
+
+- The first release supports **one owner only**, in a private chat only.
+- On first use, it captures the owner's Telegram ID from a six-digit pairing code and saves it to the allowlist.
+- This release does not support additional users or group chats.
+- The same authorization check applies to messages and buttons.
+
+Read [SECURITY.md](SECURITY.md) before choosing **Work freely**.
+
+### Installation — Five steps after you have a Claude subscription
+
+1. Create a bot with BotFather and copy its bot token.
+2. Download the Windows package for your computer, extract it, and double-click `START.cmd`. If Windows displays a warning, verify the filename and source before choosing to run it.
+3. Paste the bot token into the setup window and select **Verify and start pairing**. Safe mode is selected by default.
+4. If Claude Code needs to be installed or signed in, complete the visible one-time window.
+5. Send the six-digit pairing code to your bot.
+
+The rest happens automatically:
+
+- Captures your Telegram account ID from the pairing message without using a third-party bot.
+- Installs the files in `%LOCALAPPDATA%\cc-telegram-bridge`.
+- Saves `.env` as UTF-8 without a BOM.
+- Creates a shortcut in the Startup folder.
+- Starts the bridge in the background.
+- Sends a success message to your bot.
+
+Automatic startup occurs **when you sign in to Windows**, not before sign-in during system boot.
+
+### Known Windows limitations
+
+- A computer with enforced Smart App Control may block the package scripts. We do not ask you to disable it.
+- An enforced company policy such as PowerShell AllSigned or Restricted may block execution; `ExecutionPolicy Bypass` cannot override Group Policy.
+- Automatic operation stops when you sign out and resumes when you sign in again.
+- The first release is unsigned, so SmartScreen may display a warning. We do not ask you to disable SmartScreen or Defender.
+- **The bridge itself** does not update automatically, download code from the internet, or run `git pull`. Updating the bridge requires downloading a new package and verifying its checksum.
+- **Claude Code is a separate external dependency:** If the launcher installs it through Anthropic's native installer, Claude Code updates itself automatically in the background. This is intentional so security fixes and new features can arrive. Before downloading the installer, the setup window shows the source and impact and asks for explicit approval.
+
+### Change settings, diagnose, or uninstall
+
+Run `START.cmd` again:
+
+- **Change settings** does not reveal the encrypted bot token unless you explicitly approve it.
+- **Diagnostics** checks the bot token, Claude sign-in, owner, bridge process, state version, and Startup shortcut, then provides an Arabic solution.
+- **Restore state** stops the bridge and restores the most recent valid `state.json.bak` after your approval, while preserving the corrupted file separately for review.
+- **Uninstall** stops the bridge and removes only the Startup shortcut. It does not delete your settings or memory; it shows the folder location so you can remove it yourself if desired.
+
+### How it locates Claude Code
+
+At startup, the bridge checks:
+
+- The path set in `CLAUDE_BIN`.
+- The stable native installation path `%USERPROFILE%\.local\bin\claude.exe` first.
+- Native Claude Desktop installations in known Windows directories.
+- `cli.js` from a global npm installation.
+- Results returned by `where.exe`.
+
+When both native and npm installations exist, the bridge prefers the updated native installation. After an official installation, it saves the exact path it verified. It does not launch `.cmd` or `.bat` files through a shell, preventing user text from entering an injectable command. If only an npm installation is found, it launches `cli.js` directly with Node.js.
+
+The launcher uses Anthropic's **official native installation channel** (`https://claude.ai/install.ps1`) because Anthropic recommends it on Windows and it supports automatic security updates. Before running it, the launcher displays the URL, explains background updates, and asks for explicit approval. If installation fails, it provides the manual installation link instead of continuing silently. It does not use `claude setup-token`.
+
+### Bot commands
+
+- `/help` or `/مساعدة`: Shows a quick guide with buttons for status, session, permissions, model, restart, and diagnostics commands.
+- `/status` or `/حالة`: Shows the active task and its duration in minutes, queued requests, whether previous context will be used, the model and version, thinking level, permissions, and connection state.
+- `/new` or `/جديد`: Starts a new session and forgets the previous conversation context.
+- `/permissions` or `/صلاحيات`: Changes the permission mode.
+- `/model` or `/نموذج`: Shows the current model and buttons for **Haiku 4.5 / Sonnet 5 / Opus 5 / Fable 5**. After choosing a model, it shows the thinking levels: low, medium, high, very high, and maximum. You can also select a model directly, such as `/model opus`, or ask the bot to change it in natural language.
+- `/restart` or `/إعادة_تشغيل`: Restarts the bridge remotely if it hangs or behaves unexpectedly, then confirms when it is back. The command is rejected while a task is running so it cannot interrupt active work.
+- `/diagnose` or `/تشخيص`: Checks the bridge connection, active and queued tasks, conversation context, Claude Code installation and sign-in, permissions, model and version, and thinking level, then suggests a solution when it finds a problem.
+- **⏹ Stop task:** Stops the current task or removes it from the queue.
+- **🔄 Retry:** Repeats the latest request in the conversation.
+
+The default model is **Sonnet**. Model choice is saved per user and survives bridge restarts. The thinking level remains **Claude's default** until you choose one; after that, it is saved and passed to Claude Code. **Fable** may require a Max plan. The bridge does not assume plan details; if Claude Code rejects a model or thinking level, it displays a clear Arabic message asking you to try another option.
+
+While a task is running, the bridge sends the typing status immediately and refreshes it every four seconds. It maintains one progress message with a stop button. Both elapsed and final times are shown in minutes without a distracting seconds counter.
+
+The `/restart` command does not update the bridge or Claude Code. Updating the bridge requires a new package, while Claude Code manages its updates as a separate application. The command exists to recover the bridge remotely if it becomes stuck.
+
+### Memory
+
+The bridge stores the Claude Code session ID for each conversation, plus model and thinking-level choices for each user, in `data/state.json`. This preserves context and preferences after the program restarts. The `/new` command clears only the current conversation session.
+
+Memory is local to one computer. There is no synchronization between computers, Git integration, or shared storage.
+
+Each state save preserves the previous copy in `data/state.json.bak`. If the current state file is corrupted or structurally invalid, **the bridge does not start with empty state**. It isolates the corrupted file, stops with a clear Arabic message in the log, and waits for you to explicitly restore the backup through the setup window.
+
+### How much does it cost?
+
+The project itself is free and open source. It does not require a server or monthly hosting subscription.
+
+Running Claude Code through your subscription depends on your sign-in and subscription allowance. Be aware that an `ANTHROPIC_API_KEY` in your environment may switch billing to metered API charges. The bridge hides this key from the child process by default and warns you when it finds one.
+
+Do not enable `CLAUDE_ALLOW_API_BILLING=1` unless you intentionally want API billing and understand its cost.
+
+### Privacy and logging
+
+- The log does not record the text of your requests or Claude's answers.
+- The Claude process receives an environment built from a small allowlist only: essential paths and personal subscription credentials. The launcher uses the same allowlist when checking sign-in.
+- The first release does not support private Anthropic gateways or enterprise proxy/CA configurations. It therefore does not pass `ANTHROPIC_AUTH_TOKEN`, `ANTHROPIC_BASE_URL`, or proxy and certificate variables, preventing credentials from being passed without their intended destination.
+- Telegram messages are sent as plain text without Markdown or HTML.
+- The `data/` directory, `.env`, and all local files are excluded from Git.
+- The bot token is encrypted with DPAPI for the current user, and permissions on the settings file are restricted.
+- Sensitive approval requests remain in memory only; tool inputs are not written to the state file. A button contains only a short random identifier and the approve or reject decision, while secrets are redacted. If the full description cannot fit within the safe limit, the request is rejected before delivery and Claude is asked to split it.
+- Absolute Windows, UNC, and POSIX paths are redacted from messages, errors, and logs, while the visible command suffix is preserved so you can understand the required action.
+- Safe-mode sessions cannot start without a complete approval-broker context and use `--strict-mcp-config` to isolate them from any other MCP servers configured in the user's or project's settings.
+- Stopping a task or the bridge, or losing the approval broker, rejects every pending request. There is no second consumer for Telegram updates.
+- Every answer part is stored as an independent outbox unit, and its `message_id` is recorded when delivered. If a later part fails, confirmed earlier parts are not sent again.
+- Delivery is **at least once**: a part may be duplicated if Telegram received it but the connection failed before the response arrived, because the Bot API does not provide an idempotency key. We do not claim exactly-once delivery.
+- The outbox retains at most 500 pending envelopes (one envelope is one answer and may contain several parts), no more than 1,100 total records, and no longer than seven days. When full, it moves the oldest records to a local dead-letter list capped at 50 entries; expired records are isolated instead of allowing the file to grow without limit.
+- `logs\bridge.log` rotates automatically at 5 MiB while the process remains running and retains one previous copy.
+
+### Development and testing
+
+The project has no external dependencies; it uses only built-in Node.js APIs.
+
+```powershell
+npm run check
+npm test
+```
+
+To build the official x64 package locally:
+
+```powershell
+npm run build:win
+```
+
+The build script downloads the portable Node.js 24.18.0 LTS runtime from `nodejs.org`, verifies its SHA-256 against the official `SHASUMS256.txt`, then creates a deterministic ZIP with fixed ordering and timestamps in `dist\`. Two builds from the same content produce the same checksum. Node.js binaries are not committed to Git history.
+
+Tests cover approval, rejection, timeout, repeated button presses, wrong owner or chat, cancellation, broker shutdown, rejection of oversized requests, tool-name injection prevention, prevention of Telegram offset commits after failed updates, strict MCP isolation, typing and progress behavior, minute limits, help buttons, thinking levels, and bidirectional-text safety. They also run real supervisor and Node.js processes for stop, uninstall, and update behavior; two Claude discovery environments; corrupted state and explicit recovery; outbox parts, capacity, and TTL; and live log rotation.
+
+### License and attribution
+
+Licensed under the MIT License. See [LICENSE](LICENSE) and [CREDITS.md](CREDITS.md).
+
+This is an unofficial community project. It is not affiliated with or endorsed by Anthropic or Telegram.
+
+[↑ Choose language / اختر اللغة](#readme-top)
