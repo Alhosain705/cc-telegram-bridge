@@ -1,15 +1,11 @@
 # CC Telegram Bridge
 
-<a id="readme-top"></a>
-
 <p align="center">
   <strong>اختر اللغة · Choose your language</strong><br>
-  <a href="#user-content-arabic">العربية</a> · <a href="#user-content-english">English</a>
+  <a href="#العربية">العربية</a> · <a href="#english">English</a>
 </p>
 
 ---
-
-<a id="arabic"></a>
 
 ## العربية
 
@@ -181,11 +177,9 @@ npm run build:win
 
 هذا مشروع مجتمعي غير رسمي، وليس تابعاً لـAnthropic أو Telegram ولا معتمداً منهما.
 
-[↑ اختر اللغة / Choose language](#user-content-readme-top)
+[↑ اختر اللغة / Choose language](#cc-telegram-bridge)
 
 ---
-
-<a id="english"></a>
 
 ## English
 
@@ -357,4 +351,4 @@ Licensed under the MIT License. See [LICENSE](LICENSE) and [CREDITS.md](CREDITS.
 
 This is an unofficial community project. It is not affiliated with or endorsed by Anthropic or Telegram.
 
-[↑ Choose language / اختر اللغة](#user-content-readme-top)
+[↑ Choose language / اختر اللغة](#cc-telegram-bridge)
