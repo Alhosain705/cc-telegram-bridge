@@ -3,6 +3,16 @@
 
 ---
 
+## [0.1.3-public-release] — 09Aug2026 23:42 AST
+**By:** Codex Mini
+**What:** Published the first public GitHub repository with a single clean-history source snapshot of approved internal revision `526554bb7a830f6fc598df6c00eca6175f102eff`, excluding only the internal `plans/` handoff directory. Published `main`, annotated tag `v0.1.3`, the Windows x64 ZIP, and its SHA-256 manifest.
+**Why:** The owner explicitly authorized the GitHub repository and latest approved release after the final independent review returned `READY`.
+**Decision:** Keep the internal development history local and expose a one-commit public history under `Alhosain705/cc-telegram-bridge`. The current owner authorization supersedes the earlier publication sequencing in D46. The prepared fresh-user disposable-bot test for 0.1.3 was not executed in this publication session and remains a recommended follow-up; it is not claimed as completed.
+**Evidence:** `npm run check` passed. The first full test run had one Windows process-shutdown timing failure; that test passed immediately in isolation and the complete rerun passed **110/110**. The clean public snapshot matched all 51 approved blobs. The deterministic build produced 39,024,226 bytes and SHA-256 `23194b7b8a8724f5a16385f08786342b0853ceaa6256421713910ce93a3364c7`. An unauthenticated clone resolved `main` to public commit `a7eee663bf1391bb70dd9f8cb8fa04e9c6db08c0`; the raw README and release page returned HTTP 200; the public release download reproduced the same digest and contained 2,019 entries.
+**Release:** `v0.1.3` · public revision `a7eee663bf1391bb70dd9f8cb8fa04e9c6db08c0` · 110 tests passed · rollback: change repository visibility to private; if only the release assets fail, mark the release draft.
+
+---
+
 ## [0.1.3-independent-review-T-165-remediation] — 07Aug2026 06:14 AST
 **By:** Codex Mini
 **What:** Closed T-165 RB-1 by distinguishing short public routes from local-looking POSIX paths in URL query and fragment values, including one- and two-layer percent encoding. Also kept unspaced ampersands inside path names, removed the private-key label length ceiling, accepted hyphenated PEM labels, matched exact end labels, and prevented adjacent Bearer credentials from exposing the second payload. Updated the shipped security contract and its privacy-first ambiguity limits.
