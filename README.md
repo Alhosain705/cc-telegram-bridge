@@ -13,7 +13,14 @@
 
 الحزمة الجاهزة فيها نافذة إعداد عربية وNode.js محمول؛ المستخدم ما يحتاج يثبت Node أو يفتح موجّه الأوامر.
 
-> 📘 **ابدأ من هنا:** افتح **[`MANUAL.html`](MANUAL.html)** بأي متصفح — دليل عربي مصوّر يشرح التركيب خطوة خطوة والخصائص والأمان وحلّ المشاكل. هذا الملف (`README`) للتفاصيل التقنية.
+## تحميل النسخة الجاهزة لويندوز
+
+> ⬇️ **[حمّل حزمة Windows x64 الجاهزة — الإصدار 0.1.3](https://github.com/Alhosain705/cc-telegram-bridge/releases/download/v0.1.3/cc-telegram-bridge-0.1.3-win-x64.zip)**<br>
+> 🔐 **[حمّل ملف التحقق SHA-256](https://github.com/Alhosain705/cc-telegram-bridge/releases/download/v0.1.3/cc-telegram-bridge-0.1.3-win-x64.zip.sha256)** · **[شاهد صفحة الإصدار](https://github.com/Alhosain705/cc-telegram-bridge/releases/tag/v0.1.3)**
+
+لا تستخدم **Code → Download ZIP** للتثبيت؛ هذا الزر ينزّل كود المصدر فقط، وليس حزمة ويندوز الجاهزة.
+
+بعد التنزيل، فكّ الضغط أولاً ثم افتح `MANUAL.html` من داخل المجلد — دليل عربي مصوّر يشرح التركيب خطوة خطوة والخصائص والأمان وحلّ المشاكل. هذا الملف (`README`) للتفاصيل التقنية.
 
 ## الخطوة صفر — قبل الخمس خطوات
 
@@ -53,7 +60,7 @@
 ## التركيب — خمس خطوات بعد ما يكون عندك اشتراك كلود
 
 1. أنشئ بوتاً من BotFather وانسخ رمز البوت.
-2. نزّل حزمة ويندوز المطابقة لجهازك، فك الضغط، واضغط مرتين على `START.cmd`. إذا ظهر تحذير ويندوز، راجع اسم الملف والمصدر ثم اختر التشغيل.
+2. [نزّل حزمة Windows x64 الجاهزة](https://github.com/Alhosain705/cc-telegram-bridge/releases/download/v0.1.3/cc-telegram-bridge-0.1.3-win-x64.zip)، فك الضغط، واضغط مرتين على `START.cmd`. إذا ظهر تحذير ويندوز، راجع اسم الملف والمصدر ثم اختر التشغيل.
 3. الصق رمز البوت في النافذة واضغط «تحقّق وابدأ الربط». الوضع الآمن محدد افتراضياً.
 4. إذا احتاج Claude Code تثبيتاً أو تسجيل دخول، أكمل النافذة المرئية التي تظهر مرة واحدة.
 5. أرسل كود الربط المكوّن من 6 أرقام إلى بوتك.
@@ -187,7 +194,14 @@ A simple bridge between Telegram and Claude Code on a Windows computer. Send a r
 
 The ready-to-use package includes an Arabic setup window and a portable Node.js runtime. Users do not need to install Node.js or open a command prompt.
 
-> 📘 **Start here:** Open **[`MANUAL.html`](MANUAL.html)** in any browser. It is an illustrated Arabic guide that explains installation, features, security, and troubleshooting step by step. This `README` contains the technical details.
+## Download the ready-to-use Windows package
+
+> ⬇️ **[Download the ready-to-use Windows x64 package — version 0.1.3](https://github.com/Alhosain705/cc-telegram-bridge/releases/download/v0.1.3/cc-telegram-bridge-0.1.3-win-x64.zip)**<br>
+> 🔐 **[Download the SHA-256 checksum](https://github.com/Alhosain705/cc-telegram-bridge/releases/download/v0.1.3/cc-telegram-bridge-0.1.3-win-x64.zip.sha256)** · **[View the release page](https://github.com/Alhosain705/cc-telegram-bridge/releases/tag/v0.1.3)**
+
+Do not use **Code → Download ZIP** for installation. That button downloads the source code, not the ready-to-use Windows package.
+
+After downloading, extract the package first and open `MANUAL.html` from inside the folder. It is an illustrated Arabic guide that explains installation, features, security, and troubleshooting step by step. This `README` contains the technical details.
 
 ### Step zero — Before the five steps
 
@@ -227,7 +241,7 @@ Read [SECURITY.md](SECURITY.md) before choosing **Work freely**.
 ### Installation — Five steps after you have a Claude subscription
 
 1. Create a bot with BotFather and copy its bot token.
-2. Download the Windows package for your computer, extract it, and double-click `START.cmd`. If Windows displays a warning, verify the filename and source before choosing to run it.
+2. [Download the ready-to-use Windows x64 package](https://github.com/Alhosain705/cc-telegram-bridge/releases/download/v0.1.3/cc-telegram-bridge-0.1.3-win-x64.zip), extract it, and double-click `START.cmd`. If Windows displays a warning, verify the filename and source before choosing to run it.
 3. Paste the bot token into the setup window and select **Verify and start pairing**. Safe mode is selected by default.
 4. If Claude Code needs to be installed or signed in, complete the visible one-time window.
 5. Send the six-digit pairing code to your bot.

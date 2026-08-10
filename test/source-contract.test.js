@@ -40,3 +40,17 @@ test('keeps Telegram sends in plain text without parse_mode', () => {
   const telegram = fs.readFileSync(path.join(root, 'src', 'telegram.js'), 'utf8');
   assert.equal(telegram.includes('parse_mode'), false);
 });
+
+test('gives non-technical users direct package and checksum links', () => {
+  const readme = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
+  const manual = fs.readFileSync(path.join(root, 'MANUAL.html'), 'utf8');
+  const packageUrl = 'https://github.com/Alhosain705/cc-telegram-bridge/releases/download/v0.1.3/cc-telegram-bridge-0.1.3-win-x64.zip';
+  const checksumUrl = `${packageUrl}.sha256`;
+
+  assert.ok(readme.split(packageUrl).length >= 4, 'README must link the package in both languages and installation steps');
+  assert.ok(readme.split(checksumUrl).length >= 3, 'README must link the checksum in both languages');
+  assert.match(readme, /لا تستخدم \*\*Code → Download ZIP\*\*/);
+  assert.match(readme, /Do not use \*\*Code → Download ZIP\*\*/);
+  assert.match(manual, new RegExp(packageUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  assert.match(manual, new RegExp(checksumUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+});
