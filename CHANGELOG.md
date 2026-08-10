@@ -3,6 +3,16 @@
 
 ---
 
+## [0.1.3-direct-download-ux] — 10Aug2026 20:03 AST
+**By:** Codex Mini
+**What:** Added prominent direct links to the ready-to-use Windows x64 ZIP, its SHA-256 manifest, and the release page in both README languages and their installation steps. The README now warns that GitHub's **Code → Download ZIP** action downloads source code, not the user package. The shipped Arabic manual includes the same direct package and checksum path, and a source-contract test prevents the links from disappearing.
+**Why:** A live fresh-user walkthrough started at the public repository and could not find the package. The release assets were published correctly, but the repository told users to download a Windows package without providing an actionable link; the prior test kit also bypassed the public distribution path through Nextcloud/Exchange.
+**Decision:** The governing UX rule is now task-based: every onboarding and release path must be walked from the public entry point as a non-technical first-time user. Technical existence checks do not satisfy this gate. The next required action must be visible, plain-language, and directly clickable.
+**Evidence:** Internal content revision `9820fc63602b3a7caabc30057dcfe2d692a37c45` and public content revision `529c0ff1911d64c0404dc623cec54f155124ed9e` contain identical README, manual, and regression-test files. `npm run check` passed; `npm test` passed **111/111**. Anonymous live-path and visual verification are recorded after publication in project truth.
+**Release:** documentation/onboarding update on `main` · `v0.1.3` tag and release assets unchanged · rollback: `git revert 529c0ff1911d64c0404dc623cec54f155124ed9e && git push https://Alhosain705@github.com/Alhosain705/cc-telegram-bridge.git main`.
+
+---
+
 ## [readme-bilingual] — 10Aug2026 00:28 AST
 **By:** Codex Mini
 **What:** Added a complete English version of the Arabic README on the same repository page. Arabic remains first, a centered Arabic/English language selector appears at the top, each language has a return link, and the English section mirrors the installation, security, commands, memory, billing, privacy, testing, and attribution details.
